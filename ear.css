@@ -1,0 +1,88 @@
+body
+{
+    background-color: #249ef4;
+    font-family: monospace;
+    font-size: 14pt;
+}
+
+button
+{
+    font-family: times;
+    font-size: 14pt;
+    margin:4px;
+    margin-right: -4px;
+    background: #adf;
+    border-style: none;
+    min-height: 25px;
+    min-width: 45px;
+}
+
+#optionsDiv
+{
+    margin-left: 0;
+}
+
+.interfaceContainer
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 420px;
+    background-color: aliceblue;
+    padding: 8px;
+    box-shadow: 0px 0px 32px 0px #124f7a;
+}
+
+.answerBoxes
+{
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.answerBox
+{
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-color: black;
+    color: black;
+    display: inline-block;
+    width: 60pt;
+    margin: 8px;
+}
+
+.buttonGroup
+{
+    border-style: solid;
+    border-width: thin;
+    border-color: #666;
+    border-radius: 3px;
+    padding: 2px;
+    margin: 5px;
+}
+
+#playButtonsContainer
+{
+    text-align: center;
+}
+
+.playButtons
+{
+    font-size: 32pt;
+    padding-left: 12px;
+    padding-right: 10px;
+    padding-top: 4px;
+    margin: 8px;
+}
+
+
+
+#mockSelectedAnswerBox
+{
+    box-shadow: 0px 0px 0px 6px #249ef4;
+    background-color: #249ef4;
+    border-color: white;
+    color: white;
+}
