@@ -15,6 +15,7 @@ button
     border-style: none;
     min-height: 25px;
     min-width: 45px;
+    transition-duration: 0.2s;
 }
 
 button:hover
@@ -80,11 +81,8 @@ button:hover
     font-size: 32pt;
     padding-left: 12px;
     padding-right: 10px;
-    padding-top: 4px;
     margin: 8px;
 }
-
-
 
 #mockSelectedAnswerBox
 {

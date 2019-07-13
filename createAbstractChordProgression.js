@@ -14,7 +14,7 @@ export function createAbstractChordProgression(configuration = {})
     {
         // something similar to what a default config would look like
         let chordConfig = {mustContain: new Set([0])};
-        ret.concat(createAbstractChord(chordConfig));
+        ret.push(createAbstractChord(chordConfig));
     }
     
     return ret;

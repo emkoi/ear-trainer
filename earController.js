@@ -52,6 +52,21 @@ export class EarController
         this.accidental = 'sharp';
     }
     
+    onIButtonClicked()
+    {
+        console.log("I button clicked");
+    }
+    
+    onIVButtonClicked()
+    {
+        console.log("IV button clicked");
+    }
+    
+    oniiiButtonClicked()
+    {
+        console.log("iii button clicked");
+    }
+    
     
     
     _assignHandlers()
@@ -61,5 +76,8 @@ export class EarController
         setHandler("flat", this.onFlatButtonClicked);
         setHandler("natural", this.onNaturalButtonClicked);
         setHandler("sharp", this.onSharpButtonClicked);
+        setHandler("majorI", this.onIButtonClicked);
+        setHandler("majorIV", this.onIVButtonClicked);
+        setHandler("minoriii", this.oniiiButtonClicked);
     }
 }
