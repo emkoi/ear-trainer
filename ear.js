@@ -2,6 +2,15 @@ import {testFunc} from './testModule.js';
 import {SoftTriangle} from './softTriangle.js'
 import {playChord} from './playChord.js'
 import * as Chords from './chord.js'
+import {EarController} from './earController.js'
+import {EarModel} from './earModel.js'
+
+window.addEventListener("load", init, false);
+function init()
+{
+    window.earModel = new EarModel();
+    window.earController = new EarController(window.earModel);
+}
 
 console.log(testFunc(419));
 

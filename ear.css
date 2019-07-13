@@ -10,7 +10,7 @@ button
     font-family: times;
     font-size: 14pt;
     margin:4px;
-    margin-right: -4px;
+    margin-right: -7px;
     background: #adf;
     border-style: none;
     min-height: 25px;
@@ -28,7 +28,7 @@ button
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 420px;
+    max-width: 382px;
     background-color: aliceblue;
     padding: 8px;
     box-shadow: 0px 0px 32px 0px #124f7a;
@@ -36,7 +36,7 @@ button
 
 .answerBoxes
 {
-    max-width: 400px;
+    max-width: 350px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -60,6 +60,7 @@ button
     border-color: #666;
     border-radius: 3px;
     padding: 2px;
+    padding-right: 12px;
     margin: 5px;
 }
 
