@@ -9,12 +9,21 @@ export class EarController
         this.selectedInputChordIndex = undefined;
         this._assignHandlers();
         this.accidental = 'natural';
+        this.playedChords = undefined;
     }
     
     update() // called by model
     {
         // get everything from model and push to view; if better
         // performance is needed, use dirty bits
+    }
+    
+    //////// Handlers /////////
+    
+    onPlayButtonClicked()
+    {
+        //const chordsPlaying = ???;
+        //if (!chordsPlaying) this.playChords();
     }
     
     onFlatButtonClicked()

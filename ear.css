@@ -17,6 +17,11 @@ button
     min-width: 45px;
 }
 
+button:hover
+{
+    background-color: #63b7f2;
+}
+
 #optionsDiv
 {
     margin-left: 0;
@@ -32,6 +37,7 @@ button
     background-color: aliceblue;
     padding: 8px;
     box-shadow: 0px 0px 32px 0px #124f7a;
+    border-radius: 6px;
 }
 
 .answerBoxes
