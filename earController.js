@@ -24,17 +24,13 @@ export class EarController
     doInitialPlayChords()
     {
         const abstractChordProg = this.model.getAnswerChords();
-        console.log("abstract answer chords:");
-        console.log(abstractChordProg);
         this.playedChords = makeConcreteChordProgression(abstractChordProg, this.model.getConfig());
-        console.log("concrete played chords:");
-        console.log(this.playedChords);
-        this.chordProgPlayer.playProgression(this.playedChords);
+        this.chordProgPlayer.playProgression(this.playedChords, this.model.getConfig());
     }
     
     playChords()
     {
-        this.chordProgPlayer.playProgression(this.playedChords);
+        this.chordProgPlayer.playProgression(this.playedChords, this.model.getConfig());
     }
     
     update() // called by model

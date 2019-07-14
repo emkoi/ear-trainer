@@ -3,7 +3,7 @@ import {AbstractChord} from './abstractChord.js'
 // it may be worth creating a prototype object for configuration with 
 // the defaults, so users could see the fields without looking at the
 // implementation of this function
-export function createAbstractChord(config = {})
+export function createAbstractChord(config = {}, specificActions = {})
 {
     let ret = new AbstractChord();
     const DEFAULT_NUM_NOTES = 3;
@@ -16,12 +16,27 @@ export function createAbstractChord(config = {})
                 ["ii", new Set([2, 5, 9])],
                 ["iii", new Set([4, 7, 11])],
                 ["IV", new Set([5, 9, 0])],
-                ["V", new Set([7, 11, 2])]
+                ["V", new Set([7, 11, 2])],
+                ["vi", new Set([9, 0, 4])],
+                ["viib5", new Set([11, 2, 5])]
             ]);
-            const randomChordIndex = Math.floor(Math.random() * config.enabledChords.size);
-            const randomChord = Array.from(config.enabledChords)[randomChordIndex];
-            console.log("chord: " + randomChord);
-            const chosenNotes = chordNoteMap.get(randomChord);
+            
+            let chosenNotes = new Set;
+            
+            if (specificActions.makeChord)
+            {
+                console.log("chord: " + specificActions.makeChord);
+                chosenNotes = chordNoteMap.get(specificActions.makeChord);
+            }
+            else
+            {
+                const randomChordIndex = Math.floor(Math.random() * config.enabledChords.size);
+                const randomChord = Array.from(config.enabledChords)[randomChordIndex];
+                console.log("chord: " + randomChord);
+                chosenNotes = chordNoteMap.get(randomChord);
+            }
+            
+            
             chosenNotes.forEach((newNote) => ret = ret.addNote(newNote));
         }
     }

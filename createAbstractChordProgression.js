@@ -12,7 +12,18 @@ export function createAbstractChordProgression(config = {})
     
     for (let i = 0; i < numChords; i++) 
     {
-        ret.push(createAbstractChord(config));
+        let specificActions = {}
+        if (config.endWith && i === numChords - 1)
+        {
+            const selectedChord = config.endWith[Math.floor(Math.random() * config.endWith.length)];
+            specificActions.makeChord = selectedChord;
+        }
+        else if (config.penultimateChord && i === numChords - 2)
+        {
+            const selectedChord = config.penultimateChord[Math.floor(Math.random() * config.penultimateChord.length)];
+            specificActions.makeChord = selectedChord;
+        }
+        ret.push(createAbstractChord(config, specificActions));
     }
     
     return ret;

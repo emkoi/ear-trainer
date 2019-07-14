@@ -9,18 +9,25 @@ export class ChordProgressionPlayer
         this.audioCtx = audioCtx;
     }
     
-    playProgression(concreteProg)
+    playProgression(concreteProg, config = {})
     {
-        const CHORD_DURATION = 2.4;
+        const DEFAULT_CHORD_DURATION = config.chordDuration;
+        let timeAccum = 0;
+        
         for (let i = 0; i < concreteProg.length; i++)
         {
+            let duration = DEFAULT_CHORD_DURATION;
+            if (config.lastChordDuration && i === concreteProg.length - 1) duration = config.lastChordDuration;
+            
             playChord(
                 this.audioCtx,
                 concreteProg[i],
                 SoftTriangle,
-                CHORD_DURATION, 
-                this.audioCtx.currentTime + i*CHORD_DURATION
+                duration, 
+                this.audioCtx.currentTime + timeAccum
             );
+            
+            timeAccum += duration;
         }
     }
 }

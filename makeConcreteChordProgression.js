@@ -8,8 +8,6 @@ export function makeConcreteChordProgression(abstractChordProgArray, config = {}
     return abstractChordProgArray.map(
         function(abstractChord)
         {
-            console.log("abstractChord:"); 
-            console.log(abstractChord); 
             return makeConcreteChord(abstractChord, config);
         }
     );

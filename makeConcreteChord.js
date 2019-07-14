@@ -7,8 +7,6 @@ import * as chrd from './chord.js'
 
 export function makeConcreteChord(abstractChord, config = {})
 {
-    console.log("makeConcreteChord took:");
-    console.log(abstractChord);
     let ret = new chrd.Chord();
     
     for(let abstractNote of abstractChord.notes)
@@ -17,8 +15,6 @@ export function makeConcreteChord(abstractChord, config = {})
         ret.notes.push(concreteNote);
     }
     
-    console.log("...and returned:");
-    console.log(ret);
     return ret;
 }
 
@@ -39,7 +35,6 @@ function makeConcreteNote(abstractNote, config = {})
     const randomIndex = Math.floor(Math.random() * possibleNoteIndices.length);
     const chosenNoteIndex = possibleNoteIndices[randomIndex];
     const noteName = getNoteName(chosenNoteIndex);
-    console.log("created concrete note: " + noteName);
     return new note.Note(note.getFreq(noteName));
 }
 
