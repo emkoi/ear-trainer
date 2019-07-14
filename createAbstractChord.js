@@ -13,11 +13,14 @@ export function createAbstractChord(config = {})
         {
             const chordNoteMap = new Map([
                 ["I", new Set([0, 4, 7])],
+                ["ii", new Set([2, 5, 9])],
                 ["iii", new Set([4, 7, 11])],
-                ["IV", new Set([5, 9, 0])]
+                ["IV", new Set([5, 9, 0])],
+                ["V", new Set([7, 11, 2])]
             ]);
             const randomChordIndex = Math.floor(Math.random() * config.enabledChords.size);
             const randomChord = Array.from(config.enabledChords)[randomChordIndex];
+            console.log("chord: " + randomChord);
             const chosenNotes = chordNoteMap.get(randomChord);
             chosenNotes.forEach((newNote) => ret = ret.addNote(newNote));
         }

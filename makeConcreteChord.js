@@ -5,15 +5,7 @@ import * as chrd from './chord.js'
 // concrete-chord-creating interface, but more thought is required to
 // design that
 
-// this constant should maybe be in a file with higher scope
-const REFERENCE_NOTE_A0 = 0; // lowest note on a piano
-
-const DEFAULT_CONFIGURATION = {
-    key:"C",
-    range: {min:REFERENCE_NOTE_A0 + 12*3, max:REFERENCE_NOTE_A0 + 12*4}
-}
-
-export function makeConcreteChord(abstractChord, config = DEFAULT_CONFIGURATION)
+export function makeConcreteChord(abstractChord, config = {})
 {
     console.log("makeConcreteChord took:");
     console.log(abstractChord);
@@ -30,11 +22,11 @@ export function makeConcreteChord(abstractChord, config = DEFAULT_CONFIGURATION)
     return ret;
 }
 
-function makeConcreteNote(abstractNote, config = DEFAULT_CONFIGURATION)
+function makeConcreteNote(abstractNote, config = {})
 {
     const concreteNoteIndex = (abstractNote + NOTE_NAME_TO_OFFSET_MAP.get(config.key)) % 12;
     const possibleNoteIndices = new Array;
-    const noteRange = {min: getNoteIndex(config.range.min), max: getNoteIndex(config.range.max)};
+    const noteRange = {min: getNoteIndex(config.range.min || "C3"), max: getNoteIndex(config.range.max || "A4")};
     
     for (let possibleNoteIndex = noteRange.min; possibleNoteIndex <= noteRange.max; possibleNoteIndex++)
     {
