@@ -13,7 +13,7 @@ const DEFAULT_CONFIGURATION = {
     range: {min:REFERENCE_NOTE_A0 + 12*3, max:REFERENCE_NOTE_A0 + 12*4}
 }
 
-export function makeConcreteChord(abstractChord, configuration = DEFAULT_CONFIGURATION)
+export function makeConcreteChord(abstractChord, config = DEFAULT_CONFIGURATION)
 {
     console.log("makeConcreteChord took:");
     console.log(abstractChord);
@@ -21,7 +21,7 @@ export function makeConcreteChord(abstractChord, configuration = DEFAULT_CONFIGU
     
     for(let abstractNote of abstractChord.notes)
     {
-        let concreteNote = makeConcreteNote(abstractNote, configuration);
+        let concreteNote = makeConcreteNote(abstractNote, config);
         ret.notes.push(concreteNote);
     }
     
@@ -34,8 +34,9 @@ function makeConcreteNote(abstractNote, config = DEFAULT_CONFIGURATION)
 {
     const concreteNoteIndex = (abstractNote + NOTE_NAME_TO_OFFSET_MAP.get(config.key)) % 12;
     const possibleNoteIndices = new Array;
+    const noteRange = {min: getNoteIndex(config.range.min), max: getNoteIndex(config.range.max)};
     
-    for (let possibleNoteIndex = config.range.min; possibleNoteIndex <= config.range.max; possibleNoteIndex++)
+    for (let possibleNoteIndex = noteRange.min; possibleNoteIndex <= noteRange.max; possibleNoteIndex++)
     {
         if (isSameNoteName(concreteNoteIndex, possibleNoteIndex))
         {
@@ -83,7 +84,7 @@ const NOTE_NAME_TO_OFFSET_MAP = new Map([
     ["Gb", 9],
     ["G", 10],
     ["Ab", 11]
-])
+]);
 
 // getNoteName(12) -> "A1"
 function getNoteName(index)
@@ -93,5 +94,14 @@ function getNoteName(index)
     index %= 12;
     
     return NOTE_INDEX_TO_NAME_MAP.get(index) + octaveNum.toString();
+}
+
+function getNoteIndex(noteName)
+{
+    let octaveNum = parseInt(noteName.slice(-1));
+    const name = noteName.slice(0, -1);
+    if (name !== "A" && name !== "Bb" && name !== "B") octaveNum--;
+    
+    return octaveNum * 12 + NOTE_NAME_TO_OFFSET_MAP.get(name)
 }
     

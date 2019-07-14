@@ -17,8 +17,10 @@ export class EarModel
     
     init()
     {
-        this.abstractAnswerChords = createAbstractChordProgression();
+        this.abstractAnswerChords = createAbstractChordProgression(this.settings);
     }
+    
+    getConfig() { return this.settings; }
     
     getAnswerChords() { return this.abstractAnswerChords; }
     
