@@ -15,6 +15,25 @@ export function makeConcreteChord(abstractChord, config = {})
         ret.notes.push(concreteNote);
     }
     
+    if (config.numNotes)
+    {
+        const range = config.numNotes.max - config.numNotes.min;
+        const numNotes = Math.floor(Math.random() * (range + 1)) + config.numNotes.min;
+        const MAX_ITS = 20;
+        const its = 0;
+        
+        while (its < MAX_ITS && ret.notes.length < numNotes)
+        {
+            const abstractNoteArray = Array.from(abstractChord.notes);
+            const chosenAbstractNote = abstractNoteArray[Math.floor(Math.random() * abstractNoteArray.length)];
+            const concreteNote = makeConcreteNote(chosenAbstractNote, config);
+            if (!isNoteInChord(concreteNote, ret))
+            {
+                ret.notes.push(concreteNote);
+            }
+        }
+    }
+    
     return ret;
 }
 
@@ -36,6 +55,16 @@ function makeConcreteNote(abstractNote, config = {})
     const chosenNoteIndex = possibleNoteIndices[randomIndex];
     const noteName = getNoteName(chosenNoteIndex);
     return new note.Note(note.getFreq(noteName));
+}
+
+function isNoteInChord(concreteNote, concreteChord)
+{
+    for (const chosenNote of concreteChord.notes)
+    {
+        const absFreqDiff = Math.abs(chosenNote.freq - concreteNote.freq);
+        const pctDiff = absFreqDiff / chosenNote.freq;
+        if (pctDiff < (Math.pow(2, 1/12) - 1) / 10) return true;
+    }
 }
 
 function isSameNoteName(a, b)

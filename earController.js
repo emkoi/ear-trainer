@@ -50,13 +50,13 @@ export class EarController
     
     onFlatButtonClicked()
     {
-        let inputChord = this.model.inputChords[this.selectedInputChordIndex];
+        console.log("flat button clicked!");
+        let inputChord = this.model.abstractInputChords[this.selectedInputChordIndex];
         if (!inputChord) return;
         
         if (this.accidental == 'natural') {}
         
-        console.log("flat button clicked!");
-        if (this.model.inputChords[this.selectedInputChordIndex])
+        if (this.model.abstractInputChords[this.selectedInputChordIndex])
         {
             
         }
