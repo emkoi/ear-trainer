@@ -23,7 +23,7 @@ export function createAbstractChord(configuration = {})
         {
             let newRet = configuration.mustContain;
             const numNotes = configuration.numNotes || DEFAULT_NUM_NOTES;
-            ret.notes.forEach((note) => if(newRet.size < numNotes) newRet.add(note));
+            ret.notes.forEach((note) => {if(newRet.size < numNotes) newRet.add(note)});
             ret = newRet;
         }
     }

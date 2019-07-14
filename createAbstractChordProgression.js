@@ -1,4 +1,4 @@
-import {createAbstractChord} from './createAbstractChord'
+import {createAbstractChord} from './createAbstractChord.js'
 
 // it may be worth creating a prototype object for configuration with 
 // the defaults, so users could see the fields without looking at the

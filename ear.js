@@ -5,11 +5,15 @@ import * as Chords from './chord.js'
 import {EarController} from './earController.js'
 import {EarModel} from './earModel.js'
 
+let audioContext = new AudioContext();
+
 window.addEventListener("load", init, false);
 function init()
 {
     window.earModel = new EarModel();
-    window.earController = new EarController(window.earModel);
+    // the controller should instantiate the audioContext ideally, but it is
+    // still needed in this file temporarily
+    window.earController = new EarController(window.earModel, audioContext);
 }
 
 console.log(testFunc(419));
@@ -19,8 +23,6 @@ function initPlayButton()
 {
     const playButton = document.querySelector("#playButton");
     //console.log(playButton);
-    
-    let audioContext = new AudioContext();
     
     function getNote(audioCtx, freq)
     {

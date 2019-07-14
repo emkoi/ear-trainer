@@ -1,19 +1,45 @@
 import {EarModel} from './earModel.js'
+import {makeConcreteChordProgression} from './makeConcreteChordProgression.js'
+import {ChordProgressionPlayer} from './chordProgressionPlayer.js'
 
 // coordinates action between the app model and the passive view
 export class EarController
 {
-    constructor(model)
+    constructor(model, audioCtx)
     {
         this.model = model;
+        this.model.subscribe(this);
         this.selectedInputChordIndex = undefined;
         this._assignHandlers();
         this.accidental = 'natural';
         this.playedChords = undefined;
+        this.audioCtx = audioCtx;
+        this.chordProgPlayer = new ChordProgressionPlayer(this.audioCtx); // ideally want to pass in 
+                                                            // model.getConfig().playerConfig or something
+        // for test; otherwise should only be called through update():
+        this.doInitialPlayChords();
+    }
+    
+    // called every time the chord progression changes
+    doInitialPlayChords()
+    {
+        const abstractChordProg = this.model.getAnswerChords();
+        console.log("abstract answer chords:");
+        console.log(abstractChordProg);
+        this.playedChords = makeConcreteChordProgression(abstractChordProg);
+        console.log("concrete played chords:");
+        console.log(this.playedChords);
+        this.chordProgPlayer.playProgression(this.playedChords);
+    }
+    
+    playChords()
+    {
+        this.chordProgPlayer.playProgression(this.playedChords);
     }
     
     update() // called by model
     {
+        if (model.isFirstUpdateSinceChordSwitch()) this.doInitialPlayChords();
         // get everything from model and push to view; if better
         // performance is needed, use dirty bits
     }
@@ -79,5 +105,6 @@ export class EarController
         setHandler("majorI", this.onIButtonClicked);
         setHandler("majorIV", this.onIVButtonClicked);
         setHandler("minoriii", this.oniiiButtonClicked);
+        setHandler("playButtonLeft", this.playChords);
     }
 }

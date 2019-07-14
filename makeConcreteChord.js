@@ -1,6 +1,10 @@
 import * as note from './note.js'
 import * as chrd from './chord.js'
 
+// NOTE: this whole file is more-or-less a placeholder for a more useful
+// concrete-chord-creating interface, but more thought is required to
+// design that
+
 // this constant should maybe be in a file with higher scope
 const REFERENCE_NOTE_A0 = 0; // lowest note on a piano
 
@@ -11,6 +15,8 @@ const DEFAULT_CONFIGURATION = {
 
 export function makeConcreteChord(abstractChord, configuration = DEFAULT_CONFIGURATION)
 {
+    console.log("makeConcreteChord took:");
+    console.log(abstractChord);
     let ret = new chrd.Chord();
     
     const key = configuration.key;
@@ -18,9 +24,13 @@ export function makeConcreteChord(abstractChord, configuration = DEFAULT_CONFIGU
     for(let abstractNote in abstractChord.notes)
     {
         let concreteNote = makeConcreteNote(abstractNote, configuration);
+        console.log("...created concrete note:");
+        console.log(concreteNote);
         ret.notes.push(concreteNote);
     }
     
+    console.log("...and returned:");
+    console.log(ret);
     return ret;
 }
 
@@ -39,7 +49,7 @@ function makeConcreteNote(abstractNote, config = DEFAULT_CONFIGURATION)
     const randomIndex = Math.floor(Math.random() * possibleNoteIndices.length);
     const chosenNoteIndex = possibleNoteIndices[randomIndex];
     const noteName = getNoteName(chosenNoteIndex);
-    return note.Note(note.getFreq(noteName));
+    return new note.Note(note.getFreq(noteName));
 }
 
 function isSameNoteName(a, b)
