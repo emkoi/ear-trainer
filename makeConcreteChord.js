@@ -10,7 +10,7 @@ const REFERENCE_NOTE_A0 = 0; // lowest note on a piano
 
 const DEFAULT_CONFIGURATION = {
     key:"C",
-    range: {min:REFERENCE_NOTE_A0 + 12*3, max:REFERENCE_NOTE_A0 + 12*5}
+    range: {min:REFERENCE_NOTE_A0 + 12*3, max:REFERENCE_NOTE_A0 + 12*4}
 }
 
 export function makeConcreteChord(abstractChord, configuration = DEFAULT_CONFIGURATION)
@@ -19,13 +19,9 @@ export function makeConcreteChord(abstractChord, configuration = DEFAULT_CONFIGU
     console.log(abstractChord);
     let ret = new chrd.Chord();
     
-    const key = configuration.key;
-    
-    for(let abstractNote in abstractChord.notes)
+    for(let abstractNote of abstractChord.notes)
     {
         let concreteNote = makeConcreteNote(abstractNote, configuration);
-        console.log("...created concrete note:");
-        console.log(concreteNote);
         ret.notes.push(concreteNote);
     }
     
@@ -36,11 +32,12 @@ export function makeConcreteChord(abstractChord, configuration = DEFAULT_CONFIGU
 
 function makeConcreteNote(abstractNote, config = DEFAULT_CONFIGURATION)
 {
+    const concreteNoteIndex = (abstractNote + NOTE_NAME_TO_OFFSET_MAP.get(config.key)) % 12;
     const possibleNoteIndices = new Array;
     
     for (let possibleNoteIndex = config.range.min; possibleNoteIndex <= config.range.max; possibleNoteIndex++)
     {
-        if (isSameNoteName(abstractNote, possibleNoteIndex))
+        if (isSameNoteName(concreteNoteIndex, possibleNoteIndex))
         {
             possibleNoteIndices.push(possibleNoteIndex);
         }
@@ -49,6 +46,7 @@ function makeConcreteNote(abstractNote, config = DEFAULT_CONFIGURATION)
     const randomIndex = Math.floor(Math.random() * possibleNoteIndices.length);
     const chosenNoteIndex = possibleNoteIndices[randomIndex];
     const noteName = getNoteName(chosenNoteIndex);
+    console.log("created concrete note: " + noteName);
     return new note.Note(note.getFreq(noteName));
 }
 
@@ -72,10 +70,25 @@ const NOTE_INDEX_TO_NAME_MAP = new Map([
     [11, "Ab"]
 ]);
 
+const NOTE_NAME_TO_OFFSET_MAP = new Map([
+    ["A", 0],
+    ["Bb", 1],
+    ["B", 2],
+    ["C", 3],
+    ["Db", 4],
+    ["D", 5],
+    ["Eb", 6],
+    ["E", 7],
+    ["F", 8],
+    ["Gb", 9],
+    ["G", 10],
+    ["Ab", 11]
+])
+
 // getNoteName(12) -> "A1"
 function getNoteName(index)
 {
-    const octaveNum = Math.floor((index + 3) / 12)
+    const octaveNum = Math.floor((index - 3) / 12) + 1;
     while (index < 0) index += 12;
     index %= 12;
     
