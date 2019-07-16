@@ -6,16 +6,19 @@ export function playChord(
     instrument, 
     duration = 3, 
     startTime = audioCtx.currentTime, 
+    config = {},
     onEnded = undefined)
 {
     let chordTones = makeChordAudioGraph(audioCtx, chord, instrument, audioCtx.destination);
     
     if (onEnded) chordTones[0].onended = onEnded;
     
+    const endTime = startTime + duration;
     for (const tone of chordTones)
     {
         tone.start(startTime);
-        tone.stop(startTime + duration); 
+        tone.stop(endTime); 
+        if (config.arpeggiationTempo) startTime = startTime + 60 / config.arpeggiationTempo;
     }
 }
 

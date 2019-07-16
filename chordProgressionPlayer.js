@@ -24,7 +24,8 @@ export class ChordProgressionPlayer
                 concreteProg[i],
                 SoftTriangle,
                 duration, 
-                this.audioCtx.currentTime + timeAccum
+                this.audioCtx.currentTime + timeAccum,
+                config
             );
             
             timeAccum += duration;

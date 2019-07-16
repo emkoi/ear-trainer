@@ -13,6 +13,7 @@ export function createAbstractChord(config = {}, specificActions = {})
         {
             const chordNoteMap = new Map([
                 ["I", [0, 4, 7]],
+                ["IM7", [0, 4, 7, 11]],
                 ["ii", [2, 5, 9]],
                 ["iii", [4, 7, 11]],
                 ["IV", [5, 9, 0]],
