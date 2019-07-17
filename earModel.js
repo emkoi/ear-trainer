@@ -10,8 +10,8 @@ export class EarModel
 {
     constructor()
     {
-        this.abstractAnswerChords = []];
-        this.abstractInputChords = []];
+        this.abstractAnswerChords = [];
+        this.abstractInputChords = [];
         this.settings = Object.assign({}, DEFAULT_SETTINGS);
         this.numCorrect = 0;
         this.numWrong = 0;
