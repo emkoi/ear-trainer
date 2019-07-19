@@ -4,32 +4,28 @@ import {playChord} from './playChord.js'
 import * as Chords from './chord.js'
 import {EarController} from './earController.js'
 import {EarModel} from './earModel.js'
+import {EarView} from './earView.js'
 
 let audioContext = new AudioContext();
 
 window.addEventListener("load", init, false);
 function init()
 {
-    window.earModel = new EarModel();
+    let earModel = new EarModel();
+    let earView = new EarView(document);
     // the controller should instantiate the audioContext ideally, but it is
     // still needed in this file temporarily
-    window.earController = new EarController(window.earModel, audioContext);
+    window.earController = new EarController(earModel, earView, audioContext);
 }
 
 console.log(testFunc(419));
 
-window.addEventListener("load", initPlayButton, false); // hopefully this is synchronous
+//window.addEventListener("load", initPlayButton, false); // hopefully this is synchronous
 function initPlayButton()
 {
     const playButton = document.querySelector("#playButton");
-    //console.log(playButton);
     
-    function getNote(audioCtx, freq)
-    {
-        return new SoftTriangle(audioCtx, freq);
-    }
-    
-    
+    // soon this will be moved to the view
     playButton.addEventListener(
         "click", 
         function()

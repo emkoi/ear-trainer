@@ -2,12 +2,13 @@ import {EarModel} from './earModel.js'
 import {makeConcreteChordProgression} from './makeConcreteChordProgression.js'
 import {ChordProgressionPlayer} from './chordProgressionPlayer.js'
 
-// coordinates action between the app model and the passive view
+// coordinates action between the app model and the view
 export class EarController
 {
-    constructor(model, audioCtx)
+    constructor(model, view, audioCtx)
     {
         this.model = model;
+        this.view = view;
         this.model.subscribe(this);
         this.selectedInputChordIndex = undefined;
         this._assignHandlers();
@@ -17,7 +18,16 @@ export class EarController
         this.chordProgPlayer = new ChordProgressionPlayer(this.audioCtx); // ideally want to pass in 
                                                             // model.getConfig().playerConfig or something
         // for test; otherwise should only be called through update():
-        this.doInitialPlayChords();
+        this.initViewListeners();
+        this.view.render(); // ideally this will be done when the viewModel changes
+        //this.doInitialPlayChords();
+        this.setChordsToPlay();
+    }
+    
+    initViewListeners()
+    {
+        this.view.onPlayButtonClicked = this.onPlayButtonClicked.bind(this);
+        /// etc. ...
     }
     
     // called every time the chord progression changes
@@ -26,6 +36,12 @@ export class EarController
         const abstractChordProg = this.model.getAnswerChords();
         this.playedChords = makeConcreteChordProgression(abstractChordProg, this.model.getConfig());
         this.chordProgPlayer.playProgression(this.playedChords, this.model.getConfig());
+    }
+    
+    setChordsToPlay()
+    {
+        const abstractChordProg = this.model.getAnswerChords();
+        this.playedChords = makeConcreteChordProgression(abstractChordProg, this.model.getConfig());
     }
     
     playChords()
@@ -44,8 +60,8 @@ export class EarController
     
     onPlayButtonClicked()
     {
-        //const chordsPlaying = ???;
-        //if (!chordsPlaying) this.playChords();
+        console.log("Play button clicked !");
+        this.chordProgPlayer.playProgression(this.playedChords, this.model.getConfig());
     }
     
     onFlatButtonClicked()
@@ -101,6 +117,6 @@ export class EarController
         setHandler("majorI", this.onIButtonClicked);
         setHandler("majorIV", this.onIVButtonClicked);
         setHandler("minoriii", this.oniiiButtonClicked);
-        setHandler("playButtonLeft", this.playChords);
+        //setHandler("playButtonLeft", this.playChords);
     }
 }
