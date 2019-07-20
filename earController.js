@@ -1,6 +1,7 @@
 import {EarModel} from './earModel.js'
 import {makeConcreteChordProgression} from './makeConcreteChordProgression.js'
 import {ChordProgressionPlayer} from './chordProgressionPlayer.js'
+import {getReferenceChordProgression} from './getReferenceChordProgression.js'
 
 // coordinates action between the app model and the view
 export class EarController
@@ -27,6 +28,7 @@ export class EarController
     initViewListeners()
     {
         this.view.onPlayButtonClicked = this.onPlayButtonClicked.bind(this);
+        this.view.onPlayReferenceButtonClicked = this.onPlayReferenceButtonClicked.bind(this);
         /// etc. ...
     }
     
@@ -62,6 +64,11 @@ export class EarController
     {
         console.log("Play button clicked !");
         this.chordProgPlayer.playProgression(this.playedChords, this.model.getConfig());
+    }
+    
+    onPlayReferenceButtonClicked()
+    {
+        this.chordProgPlayer.playProgression(getReferenceChordProgression(this.model.getConfig()));
     }
     
     onFlatButtonClicked()

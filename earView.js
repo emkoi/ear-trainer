@@ -18,6 +18,7 @@ export class EarView
     configureEventHandlers()
     {
         this.addEventHandler("#playButton", "click", this.onPlayButtonClicked);
+        this.addEventHandler("#playReferenceButton", "click", this.onPlayReferenceButtonClicked);
     }
     
     addEventHandler(selector, event, handler)
