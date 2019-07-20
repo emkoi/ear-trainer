@@ -19,18 +19,21 @@ export function makeConcreteChord(abstractChord, config = {})
     {
         const range = config.numNotes.max - config.numNotes.min;
         const numNotes = Math.floor(Math.random() * (range + 1)) + config.numNotes.min;
-        const MAX_ITS = 20;
-        const its = 0;
+        const MAX_ITS = 40;
+        let its = 0;
         
         while (its < MAX_ITS && ret.notes.length < numNotes)
         {
             const abstractNoteArray = Array.from(abstractChord.notes);
             const chosenAbstractNote = abstractNoteArray[Math.floor(Math.random() * abstractNoteArray.length)];
             const concreteNote = makeConcreteNote(chosenAbstractNote, config);
+            
             if (!isNoteInChord(concreteNote, ret))
             {
                 ret.notes.push(concreteNote);
             }
+            
+            its++;
         }
     }
     

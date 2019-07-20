@@ -31,6 +31,9 @@ export class ChordProgressionPlayer
             if (config.lastChordDuration && i === concreteProg.length - 1) duration = config.lastChordDuration;
             const startTime = this.audioCtx.currentTime + timeAccum;
             
+            let originalChordSustainParamValue = config.chordSustain;
+            let dontSustainChord = i == concreteProg.length - 1 && config.chordSustain;
+            if (dontSustainChord) config.chordSustain = false; 
             playChord(
                 this.audioCtx,
                 concreteProg[i],
@@ -43,6 +46,7 @@ export class ChordProgressionPlayer
                     this.playing = false;
                 }.bind(this) : undefined
             );
+            if (dontSustainChord) config.chordSustain = originalChordSustainParamValue;
             
             timeAccum += duration;
         }

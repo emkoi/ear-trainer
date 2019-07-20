@@ -18,6 +18,7 @@ export function getReferenceChordProgression(config = {})
     const twoChord = new Chord(second, fourth, sixth);
     const sixChord = new Chord(sixth, first, third);
     const fiveChord = new Chord(fifth, seventh, second);
+    const oneChord1stInversion = new Chord(third, fifth, first.transpose(12));
     
-    return [oneChord, sixChord, twoChord, fiveChord, oneChord];
+    return [oneChord, sixChord, twoChord, fiveChord, oneChord1stInversion];
 }
