@@ -6,7 +6,7 @@ import {getReferenceChordProgression} from './getReferenceChordProgression.js'
 // coordinates action between the app model and the view
 export class EarController
 {
-    constructor(model, view, audioCtx)
+    constructor(model, view)
     {
         this.model = model;
         this.view = view;
@@ -15,8 +15,7 @@ export class EarController
         this._assignHandlers();
         this.accidental = 'natural';
         this.playedChords = undefined;
-        this.audioCtx = audioCtx;
-        this.chordProgPlayer = new ChordProgressionPlayer(this.audioCtx); // ideally want to pass in 
+        this.chordProgPlayer = new ChordProgressionPlayer(new AudioContext()); // ideally want to pass in 
                                                             // model.getConfig().playerConfig or something
         // for test; otherwise should only be called through update():
         this.initViewListeners();
@@ -113,9 +112,10 @@ export class EarController
     }
     
     
-    
+    // need to finish moving to earView
     _assignHandlers()
     {
+        return;
         let setHandler = (id, func) => (document.getElementById(id).onclick = func.bind(this));
         
         setHandler("flat", this.onFlatButtonClicked);

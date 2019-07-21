@@ -5,7 +5,7 @@ import {createAbstractChord} from './createAbstractChord.js'
 // implementation of this function
 export function createAbstractChordProgression(config = {})
 {
-    let ret = new Array;
+    let ret = [];
     
     const DEFAULT_NUM_CHORDS = 3;
     const numChords = config.numChords || DEFAULT_NUM_CHORDS;

@@ -3,6 +3,8 @@ body
     background-color: #249ef4;
     font-family: monospace;
     font-size: 14pt;
+    font-family: times;
+    color: #222;
 }
 
 button
@@ -34,7 +36,8 @@ button:hover
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 382px;
+    width: 382px;
+    height: 445px;
     background-color: aliceblue;
     padding: 8px;
     box-shadow: 0px 0px 32px 0px #124f7a;
@@ -90,4 +93,27 @@ button:hover
     background-color: #249ef4;
     border-color: white;
     color: white;
+}
+
+.settingsTitle
+{
+    font-size: 2em;
+    margin-left: 6px;
+    margin-bottom: 5px;
+}
+
+/* Note that scrollbar width is supported differently in FF vs others */
+.settingsScrollBox
+{
+    height: 360px;
+    overflow-y: auto;
+    background: #dceefa;
+    margin-bottom: 5px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.settingParameters
+{
+    padding: 6px;
 }

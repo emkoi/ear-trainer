@@ -18,6 +18,7 @@ export function createAbstractChord(config = {}, specificActions = {})
                 ["iii", [4, 7, 11]],
                 ["IV", [5, 9, 0]],
                 ["V", [7, 11, 2]],
+                ["bvi dim7", [8, 11, 2, 5]],
                 ["vi", [9, 0, 4]],
                 ["viib5", [11, 2, 5]]
             ]);

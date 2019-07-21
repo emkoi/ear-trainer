@@ -46,15 +46,13 @@ function makeChordAudioGraph(audioCtx, chord, srcClass, destination, config = {}
     const numNotes = chord.notes.length;
     let noteGain = 1.0 / 4 / numNotes**0.5;
     
-    let sources = new Array();
+    let sources = [];
     
     for (const note of chord.notes)
     {
         let gainModFactor = 1.0;
         if (config.bassBoost) 
         {
-            //gainModFactor = 0.1 * Math.atan(-0.007*(note.freq)) / (Math.PI/2) + 0.92
-            //gainModFactor = Math.max(0.3, 1.0 - Math.log(2**((note.freq - 100)/40) + 1) / 10);
             const LOW_CUTOFF = 200;
             const HIGH_CUTOFF = 600;
             const RANGE = HIGH_CUTOFF - LOW_CUTOFF;
@@ -62,8 +60,6 @@ function makeChordAudioGraph(audioCtx, chord, srcClass, destination, config = {}
             gainModFactor = note.freq < LOW_CUTOFF ? 1.0 :
             note.freq > HIGH_CUTOFF ? MIN_GAIN_MOD_FACTOR :
             1 - (note.freq - LOW_CUTOFF) / RANGE * (1 - MIN_GAIN_MOD_FACTOR);
-            
-            console.log(gainModFactor);
         }
         let modifiedNoteGain = noteGain * gainModFactor;
         

@@ -91,18 +91,27 @@ const NOTE_INDEX_TO_NAME_MAP = new Map([
 ]);
 
 const NOTE_NAME_TO_OFFSET_MAP = new Map([
+    ["Ab", 11],
     ["A", 0],
+    ["A#", 1],
     ["Bb", 1],
     ["B", 2],
+    ["B#", 3],
+    ["Cb", 2],
     ["C", 3],
+    ["C#", 4],
     ["Db", 4],
     ["D", 5],
+    ["D#", 6],
     ["Eb", 6],
     ["E", 7],
+    ["E#", 8],
+    ["Fb", 7],
     ["F", 8],
+    ["F#", 9],
     ["Gb", 9],
     ["G", 10],
-    ["Ab", 11]
+    ["G#", 11]
 ]);
 
 // getNoteName(12) -> "A1"

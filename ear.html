@@ -1,80 +1,47 @@
 <!DOCTYPE html>
 <html>
-    
+
 <head>
     <title>Chord Progression Ear Training</title>
     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="ear.css" rel="stylesheet">
-    
-<!--
-    <script type="module" src="chord.js"></script>
-    <script type="module" src="playChord.js"></script>
-    <script type="module" src="softTriangle.js"></script>
-    <script type="module" src="testModule.js"></script>
-    <script type="module" src="earModel.js"></script>
-    <script type="module" src="earController.js"></script>
--->
     <script src="initWebAudio.js"></script>
     <script type="module" src="ear.js"></script>
 </head>
-    
+
 <body>
+<!--    <div id="interfaceContainer" class="interfaceContainer"></div>-->
     <div class="interfaceContainer">
-        <div id="playButtonsContainer">
-            <button id="playReferenceButton" class="playButtons" type="button" data-playing="false">&#x25B6;</button>
-            <button id="playButton" class="playButtons" type="button" data-playing="false">&#x25B6;</button>
-        </div>
-        <div class="answerBoxes">
-            <span class="answerBox">ioij</span>
-            <span class="answerBox">ioij</span>
-            <span class="answerBox">oijoij</span>
-            <span class="answerBox">ioij</span>
-            <span class="answerBox">ioijj</span>
-            <span class="answerBox">ijoij</span>
-            <span id="mockSelectedAnswerBox" class="answerBox">iijoij</span>
-            <span class="answerBox">iij</span>
-            <span class="answerBox">ioijoj</span>
-        </div>
-        <div class="buttonGroup">
-            <button id="flat" type="button">&#9837;</button>
-            <button id="natural" type="button">&#9838;</button>
-            <button id="sharp" type="button">&#9839;</button>
-        </div>
-        <div class="buttonGroup">
-            <button id="majorI" type="button">I</button>
-            <button id="majorII" type="button">II</button>
-            <button id="majorIII" type="button">III</button>
-            <button id="majorIV" type="button">IV</button>
-            <button id="majorV" type="button">V</button>
-            <button id="majorVI" type="button">VI</button>
-            <button id="majorVII" type="button">VII</button>
-            <br />
-            <button id="minori" type="button">i</button>
-            <button id="minorii" type="button">ii</button>
-            <button id="minoriii" type="button">iii</button>
-            <button id="minoriv" type="button">iv</button>
-            <button id="minorv" type="button">v</button>
-            <button id="minorvi" type="button">vi</button>
-            <button id="minorvii" type="button">vii</button>
-        </div>
-        <div class="buttonGroup">
-            <button id="dominant" type="button">7</button>
-            <button id="major7" type="button">M7</button>
-            <button id="sevenFlat5" type="button">7&#9837;5</button>
-            <button id="dim7" type="button">dim7</button>
-            <button id="aug7" type="button">+7</button>
-            <button id="augMaj7" type="button">+M7</button>
-        </div>
-        <div class="buttonGroup">
-            <button id="phrygian" type="button">Phryg</button>
-            <button id="dim" type="button">&#x00b0;</button>
-            <button id="aug" type="button">+</button>
-            <button id="flat5" type="button">&#9837;5</button>
+        <div class="settingsTitle">Settings</div>
+        <div class="settingsScrollBox">
+            <div class="settingParameters">
+                Chord Selection<br/>
+                blah<br />
+                bleh<br />
+                bluh<br />
+                blah<br />
+                bleh<br />
+                bluh<br />
+                blah<br />
+                bleh<br />
+                bluh<br />
+                Chord Playing<br />
+                blah<br />
+                bleh<br />
+                bluh<br />
+                blah<br />
+                bleh<br />
+                bluh<br />
+                blah<br />
+                bleh<br />
+                bluh<br />
+            </div>
         </div>
         <div id=optionsDiv>
-            <button id="settings" type="button">Settings</button>
-            <button id="showAnswer" type="button">Show Answer</button>
-            <button id="skip" type="button">Skip</button>
+            <button id="back" type="button">Back</button>
+            <button id="restoreDefaults" type="button">Restore Defaults</button>
+            <button id="saveAsCookie" type="button">Save as Cookie</button>
         </div>
     </div>
 </body>

@@ -7,12 +7,12 @@ export class EarView
     
     render(viewModel)
     {
-        // write to element
-        // this.element.innerHTML = ...;
+        const interfaceToLoad = "mainInterface.html";
         
-        // this.whatevers to update internal state from vm
-        
-        this.configureEventHandlers();
+        $("#interfaceContainer").load(
+            interfaceToLoad,
+            function () {this.configureEventHandlers()}.bind(this)
+        );
     }
     
     configureEventHandlers()
