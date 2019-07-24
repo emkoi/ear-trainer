@@ -1,6 +1,7 @@
 import {EarController} from './earController.js'
 import {EarModel} from './earModel.js'
 import {EarView} from './earView.js'
+import {testFunc} from './testModule.js'
 
 //window.addEventListener("load", init, false);
 
