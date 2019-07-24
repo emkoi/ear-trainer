@@ -1,3 +1,4 @@
+// projects the view model onto the screen
 export class EarView
 {
     constructor(domElement)

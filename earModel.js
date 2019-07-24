@@ -1,11 +1,8 @@
 import {DEFAULT_SETTINGS} from './settings.js'
 import {createAbstractChordProgression} from './createAbstractChordProgression.js'
 
-// a layer between the controller and the core app.
-// the EarModel can project a subset of the core app's state,
-// specifically, the part a view might want.
-// so this is technically a ViewModel; it will know about the
-// Domain model, but not vice-versa
+// an element of the domain layer exposed to the presentation layer.
+// the EarModel can project a subset of the core app's state
 export class EarModel
 {
     constructor()
@@ -15,7 +12,7 @@ export class EarModel
         this.settings = Object.assign({}, DEFAULT_SETTINGS);
         this.numCorrect = 0;
         this.numWrong = 0;
-        this.subscriber = undefined;
+        this.subscribers = []];
         this.init();
     }
     
@@ -28,8 +25,8 @@ export class EarModel
     
     getAnswerChords() { return this.abstractAnswerChords; }
     
-    subscribe(subscriber) { this.subscriber = subscriber; }
-    update() { if(this.subscriber) this.subscriber.update(); }
+    subscribe(subscriber) { this.subscribers.push(subscriber); }
+    update() { this.subscribers.forEach((subscriber) => subscriber.update()); } // might have to bind subscriber
     
     isInputChordsCorrect() { return this.abstractInputChords === this.abstractAnswerChords; }
     getSettings() { return this.settings; }

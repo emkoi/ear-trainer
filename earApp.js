@@ -1,6 +1,7 @@
 
-// this is the Domain model; it knows nothing of any views, controllers, or view-models.
-// the only thing this will do is tell the observing view-models to update,
+// this is the Domain; it knows nothing of any presentation-layer element.
+// the only thing this will do is maintain the model--maybe not, because 
+// the model can just be a proxy to this object.
 class EarApp
 {
     constructor()

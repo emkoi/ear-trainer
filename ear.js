@@ -1,7 +1,3 @@
-import {testFunc} from './testModule.js';
-import {SoftTriangle} from './softTriangle.js'
-import {playChord} from './playChord.js'
-import * as Chords from './chord.js'
 import {EarController} from './earController.js'
 import {EarModel} from './earModel.js'
 import {EarView} from './earView.js'
