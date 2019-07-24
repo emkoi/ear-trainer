@@ -1,7 +1,7 @@
 import {EarModel} from './earModel.js'
-import {makeConcreteChordProgression} from './makeConcreteChordProgression.js'
+import {makeConcreteChordProgression} from './Presentation/Concrete Creation/makeConcreteChordProgression.js'
 import {ChordProgressionPlayer} from './chordProgressionPlayer.js'
-import {getReferenceChordProgression} from './getReferenceChordProgression.js'
+import {getReferenceChordProgression} from './Presentation/Concrete Creation/getReferenceChordProgression.js'
 
 // coordinates action between the app model and the view
 export class EarController

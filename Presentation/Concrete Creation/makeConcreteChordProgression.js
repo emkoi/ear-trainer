@@ -1,5 +1,5 @@
 import {makeConcreteChord} from './makeConcreteChord.js'
-import {Chord} from './chord.js'
+import {Chord} from '../Concrete Elements/chord.js'
 
 export function makeConcreteChordProgression(abstractChordProgArray, config = {})
 {

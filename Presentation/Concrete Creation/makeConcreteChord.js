@@ -1,5 +1,5 @@
-import * as note from './note.js'
-import * as chrd from './chord.js'
+import * as note from '../Concrete Elements/note.js'
+import * as chrd from '../Concrete Elements/chord.js'
 
 // NOTE: this whole file is more-or-less a placeholder for a more useful
 // concrete-chord-creating interface, but more thought is required to

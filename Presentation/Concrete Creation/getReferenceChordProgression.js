@@ -1,5 +1,5 @@
-import * as note from './note.js'
-import {Chord} from './chord.js'
+import * as note from '../Concrete Elements/note.js'
+import {Chord} from '../Concrete Elements/chord.js'
 
 export function getReferenceChordProgression(config = {})
 {
