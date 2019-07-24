@@ -1,9 +1,7 @@
-import {EarController} from './earController.js'
-import {EarModel} from './earModel.js'
-import {EarView} from './earView.js'
+import {EarController} from './Presentation/earController.js'
+import {EarModel} from './Domain/earModel.js'
+import {EarView} from './Presentation/earView.js'
 import {testFunc} from './testModule.js'
-
-//window.addEventListener("load", init, false);
 
 $(document).ready(function() { init(); });
 

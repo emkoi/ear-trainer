@@ -1,4 +1,4 @@
-import {Chord} from './Presentation/Concrete Elements/chord.js'
+import {Chord} from '../Concrete Elements/chord.js'
 
 export function playChord(
     audioCtx, 

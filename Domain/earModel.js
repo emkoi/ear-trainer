@@ -1,5 +1,5 @@
-import {DEFAULT_SETTINGS} from './settings.js'
-import {createAbstractChordProgression} from './Domain/Abstract Creation/createAbstractChordProgression.js'
+import {DEFAULT_SETTINGS} from '../settings.js'
+import {createAbstractChordProgression} from './Abstract Creation/createAbstractChordProgression.js'
 
 // an element of the domain layer exposed to the presentation layer.
 // the EarModel can project a subset of the core app's state

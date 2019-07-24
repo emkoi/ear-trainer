@@ -1,6 +1,6 @@
 import {playChord} from './playChord.js'
 import {SoftTriangle} from './softTriangle.js'
-import * as Chords from './Presentation/Concrete Elements/chord.js'
+import * as Chords from '../Concrete Elements/chord.js'
 
 export class ChordProgressionPlayer
 {

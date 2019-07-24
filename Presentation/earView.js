@@ -8,7 +8,7 @@ export class EarView
     
     render(viewModel)
     {
-        const interfaceToLoad = "mainInterface.html";
+        const interfaceToLoad = encodeURI("/Presentation/HTML Interfaces/mainInterface.html");
         
         $("#interfaceContainer").load(
             interfaceToLoad,
