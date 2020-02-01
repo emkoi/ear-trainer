@@ -116,4 +116,6 @@ button:hover
 .settingParameters
 {
     padding: 6px;
+    font-family: sans-serif;
+    font-size: 0.9em;
 }

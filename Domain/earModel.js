@@ -25,6 +25,12 @@ export class EarModel
     
     getAnswerChords() { return this.abstractAnswerChords; }
     
+    generateNewAnswerChords() 
+    {
+        this.abstractAnswerChords = createAbstractChordProgression(this.settings);
+        this.update();
+    }
+    
     subscribe(subscriber) { this.subscribers.push(subscriber); }
     update() { this.subscribers.forEach((subscriber) => subscriber.update()); } // might have to bind subscriber
     
