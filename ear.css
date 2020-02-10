@@ -18,6 +18,7 @@ button
     min-height: 25px;
     min-width: 45px;
     transition-duration: 0.2s;
+    cursor: pointer;
 }
 
 button:hover
@@ -61,6 +62,7 @@ button:hover
     display: inline-block;
     width: 60pt;
     margin: 8px;
+    cursor: pointer;
 }
 
 .buttonGroup
@@ -93,6 +95,12 @@ button:hover
     background-color: #249ef4;
     border-color: white;
     color: white;
+}
+
+.mousedOverAnswerBox
+{
+    box-shadow: 0px 0px 3px;
+    background-color: white;
 }
 
 .settingsTitle
