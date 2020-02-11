@@ -55,14 +55,40 @@ button:hover
 
 .answerBox
 {
+    box-shadow: 0px 0px 5px -1px black;
+    /*
     border-bottom-style: solid;
     border-bottom-width: 2px;
+    */
     border-color: black;
     color: black;
     display: inline-block;
     width: 60pt;
     margin: 8px;
     cursor: pointer;
+}
+
+.selectedAnswerBox
+{
+    background-color: #249ef4;
+    color: white;
+}
+
+#mockSelectedAnswerBox
+{
+    box-shadow: 0px 0px 0px 6px #249ef4;
+    background-color: #249ef4;
+    border-color: white;
+    color: white;
+}
+
+.mousedOverAnswerBox
+{
+    box-shadow: 0px 0px 6px 1px black;
+/*
+    background-color: aliceblue;
+    border-color: aliceblue;
+*/
 }
 
 .buttonGroup
@@ -87,20 +113,6 @@ button:hover
     padding-left: 12px;
     padding-right: 10px;
     margin: 8px;
-}
-
-#mockSelectedAnswerBox
-{
-    box-shadow: 0px 0px 0px 6px #249ef4;
-    background-color: #249ef4;
-    border-color: white;
-    color: white;
-}
-
-.mousedOverAnswerBox
-{
-    box-shadow: 0px 0px 3px;
-    background-color: white;
 }
 
 .settingsTitle
