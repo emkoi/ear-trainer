@@ -18,6 +18,7 @@ export class AnswerBoxWidget
     
     setClickedHandler(handlerFn)
     {
+        this.clickedHandler = handlerFn;
         this.HTMLElement.onclick = handlerFn;
     }
     

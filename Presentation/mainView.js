@@ -61,11 +61,13 @@ export class MainView
                 let box = this.answerBoxes[i];
                 box.getElement().classList.add("selectedAnswerBox");
                 let oldSelectedBox = this.answerBoxes[this.selectedInputChordIndex];
+                if (box === oldSelectedBox) return;
                 oldSelectedBox.getElement().classList.remove("selectedAnswerBox");
                 this.selectedInputChordIndex = i;
             }.bind(this)
             );
         }
+        this.answerBoxes[this.selectedInputChordIndex].clickedHandler();
     }
     
     update(msg)
@@ -110,6 +112,8 @@ export class MainView
         this.addEventHandler("#dim7", "click", this.onDim7ButtonClicked);
         this.addEventHandler("#aug7", "click", this.onAug7ButtonClicked);
         this.addEventHandler("#augMaj7", "click", this.onAugM7ButtonClicked);
+        this.addEventHandler("#minMaj7", "click", this.onMinMaj7ButtonClicked);
+        
         this.addEventHandler("#phrygian", "click", this.onPhrygButtonClicked);
         this.addEventHandler("#sus2", "click", this.onSus2ButtonClicked);
         this.addEventHandler("#sus4", "click", this.onSus4ButtonClicked);
@@ -279,6 +283,12 @@ export class MainView
         this.changeCurrentSuffix("+M7");
     }
     
+    onMinMaj7ButtonClicked()
+    {
+        console.log("m/M7 button clicked");
+        this.changeCurrentSuffix("m/M7");
+    }
+    
     onPhrygButtonClicked()
     {
         console.log("Phryg button clicked");
@@ -356,6 +366,30 @@ export class MainView
     onSkipButtonClicked()
     {
         this.model.generateNewAnswerChords();
+    }
+    
+    onShowAnswerClicked()
+    {
+        
+    }
+    
+    onSubmitClicked()
+    {
+        let guessedChords = [];
+        for (let i = 0; i < this.model.getConfig().numChords; i++)
+        {
+            let answerText = this.answerBoxes[i].getText();
+            if (!answerText)
+            {
+                console.log("didn't guess chord " + i);
+                break;
+            }
+            let parsedChord = ChordName.parseChord(answerText);
+            let abstractChord = chordNameToAbstractChord(parsedChord);
+            guessedChords.append(abstractChord);
+        }
+        
+        this.model.submitGuessedAnswerChords(guessedChords);
     }
     
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
